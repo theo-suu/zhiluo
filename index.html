@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>祗洛｜ZhiLuo</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand-area">
+      <div class="brand-cn">祗洛</div>
+      <div class="brand-en">ZhiLuo</div>
+    </div>
+
+    <nav class="main-nav" aria-label="主导航">
+      <button class="nav-btn active" type="button" data-page="introduction">
+        简介
+        <span>Introduction</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="gallery">
+        图片
+        <span>Gallery</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="timeline">
+        人生经历概要
+        <span>Timeline</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="preference">
+        兴趣爱好
+        <span>Preference</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="relations">
+        角色社会关系
+        <span>Relations</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="stories">
+        详细故事片段
+        <span>Stories</span>
+      </button>
+
+      <button class="nav-btn" type="button" data-page="inspirations">
+        角色创作笔记
+        <span>Inspirations</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <aside class="side-panel character-panel">
+      <div class="portrait-card">
+        <img
+          id="characterPortrait"
+          class="character-portrait"
+          src="祗洛/2024.3.13 (2).jpg"
+          alt="祗洛头像"
+        />
+
+        <div class="portrait-info">
+          <h1>祗洛</h1>
+          <p>ZhiLuo</p>
+        </div>
+      </div>
+
+      <section class="quick-info-card">
+        <h2>角色档案</h2>
+
+        <dl class="quick-info-list">
+          <div>
+            <dt>姓名</dt>
+            <dd>祗洛</dd>
+          </div>
+
+          <div>
+            <dt>性别</dt>
+            <dd>待补充</dd>
+          </div>
+
+          <div>
+            <dt>身高</dt>
+            <dd>待补充</dd>
+          </div>
+
+          <div>
+            <dt>职业</dt>
+            <dd>待补充</dd>
+          </div>
+
+          <div>
+            <dt>当前页面</dt>
+            <dd id="currentPageLabel">简介 Introduction</dd>
+          </div>
+        </dl>
+      </section>
+    </aside>
+
+    <section class="content-panel main-content-panel">
+
+      <div class="content-header">
+        <div>
+          <p class="eyebrow" id="sectionEyebrow">Character Profile</p>
+          <h2 id="sectionTitle">简介 Introduction</h2>
+        </div>
+
+        <div class="section-status" id="sectionStatus">
+          Profile
+        </div>
+      </div>
+
+      <section id="introView" class="intro-view">
+        <div class="intro-layout">
+
+          <section class="intro-detail-card">
+            <h3>基本信息</h3>
+
+            <dl class="profile-detail-list">
+              <div>
+                <dt>姓名</dt>
+                <dd>祗洛</dd>
+              </div>
+
+              <div>
+                <dt>性别</dt>
+                <dd>待补充</dd>
+              </div>
+
+              <div>
+                <dt>身高</dt>
+                <dd>待补充</dd>
+              </div>
+
+              <div>
+                <dt>职业</dt>
+                <dd>待补充</dd>
+              </div>
+
+              <div>
+                <dt>角色定位</dt>
+                <dd>待补充</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="intro-main-card">
+            <h3>简介 Intro</h3>
+            <article id="introMdContent" class="markdown-content"></article>
+          </section>
+
+          <section class="intro-small-card">
+            <h3>喜欢 Likes</h3>
+            <article id="introLikesContent" class="markdown-content"></article>
+          </section>
+
+          <section class="intro-small-card">
+            <h3>讨厌 Dislikes</h3>
+            <article id="introDislikesContent" class="markdown-content"></article>
+          </section>
+
+        </div>
+      </section>
+
+      <section id="galleryView" class="gallery-view hidden">
+        <div class="gallery-header">
+          <h3>图片 Gallery</h3>
+        </div>
+
+        <div class="gallery-tabs" role="tablist" aria-label="图片分类">
+          <button
+            id="selfGalleryTab"
+            class="gallery-tab active"
+            type="button"
+            data-gallery-tab="self"
+            role="tab"
+            aria-selected="true"
+            aria-controls="selfGallerySection"
+          >
+            自绘
+          </button>
+
+          <button
+            id="friendGalleryTab"
+            class="gallery-tab"
+            type="button"
+            data-gallery-tab="friend"
+            role="tab"
+            aria-selected="false"
+            aria-controls="friendGallerySection"
+          >
+            友绘
+          </button>
+        </div>
+
+        <section
+          id="selfGallerySection"
+          class="gallery-section gallery-section-self"
+          data-gallery-section="self"
+          role="tabpanel"
+          aria-labelledby="selfGalleryTab"
+        >
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <section
+          id="friendGallerySection"
+          class="gallery-section gallery-section-friend hidden"
+          data-gallery-section="friend"
+          role="tabpanel"
+          aria-labelledby="friendGalleryTab"
+        >
+          <div class="gallery-grid" id="friendGalleryGrid"></div>
+        </section>
+      </section>
+
+      <section id="timelineView" class="timeline-view hidden">
+        <div class="timeline-page-header">
+          <h3>人生经历概要 Timeline</h3>
+        </div>
+
+        <div class="timeline-list" id="timelineList"></div>
+      </section>
+
+      <section id="preferenceView" class="preference-view hidden">
+        <div class="preference-grid">
+
+          <section class="preference-card">
+            <h3>喜好 Likes</h3>
+            <article id="preferenceLikesContent" class="markdown-content"></article>
+          </section>
+
+          <section class="preference-card">
+            <h3>讨厌 Dislikes</h3>
+            <article id="preferenceDislikesContent" class="markdown-content"></article>
+          </section>
+
+        </div>
+      </section>
+
+      <section id="relationsView" class="relations-view hidden">
+
+        <div class="relations-header-card">
+          <h3>角色社会关系 Relations</h3>
+          <article id="relationsIntroContent" class="markdown-content"></article>
+        </div>
+
+        <div id="relationsPeopleList" class="relations-people-list">
+          <!-- script.js 自动生成关系人物按钮 -->
+        </div>
+
+        <section id="relationDetailView" class="relation-detail-view hidden">
+          <button id="backToRelationsList" class="back-btn" type="button">
+            ← 返回关系列表
+          </button>
+
+          <article class="relation-detail-card">
+            <h3 id="relationPersonName"></h3>
+
+            <div
+              id="relationTextContent"
+              class="markdown-content relation-text-content"
+            ></div>
+
+            <div class="relation-story-section">
+              <h4>相关故事</h4>
+              <div id="relationStoryList" class="relation-story-list"></div>
+            </div>
+          </article>
+        </section>
+
+        <article id="relationStoryReader" class="story-reader hidden">
+          <button id="backToRelationDetail" class="back-btn" type="button">
+            ← 返回人物关系
+          </button>
+
+          <div class="relation-story-reading-header">
+            <h3 id="relationStoryTitle"></h3>
+          </div>
+
+          <div
+            id="relationStoryContent"
+            class="markdown-content article-reading"
+          ></div>
+        </article>
+
+      </section>
+
+      <section id="storiesView" class="stories-view hidden">
+        <div id="storyListPanel" class="story-list-panel">
+          <div class="story-list-header">
+            <h3>详细故事片段 Stories</h3>
+          </div>
+
+          <div class="story-list" id="storyList"></div>
+        </div>
+
+        <article id="storyReader" class="story-reader hidden">
+          <button id="backToStoryList" class="back-btn" type="button">
+            ← 返回故事目录
+          </button>
+
+          <div id="storyArticleContent" class="markdown-content article-reading"></div>
+        </article>
+      </section>
+
+      <section id="inspirationView" class="inspiration-view hidden">
+        <div class="timeline-page-header">
+          <h3>角色创作笔记 Inspirations</h3>
+        </div>
+
+        <div class="timeline-list" id="inspirationList"></div>
+      </section>
+
+    </section>
+  </main>
+
+  <div id="imageModal" class="image-modal hidden" aria-hidden="true">
+    <div class="image-modal-backdrop" id="imageModalBackdrop"></div>
+
+    <div
+      class="image-modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-label="图片大图查看"
+    >
+      <button id="closeImageModal" class="modal-close-btn" type="button">
+        ×
+      </button>
+
+      <img id="modalImage" class="modal-image" src="" alt="图片大图" />
+
+      <p id="modalImageAuthor" class="modal-image-author hidden"></p>
+
+      <p id="modalImageDate" class="modal-image-date"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>祗洛｜ZhiLuo Character Archive</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
